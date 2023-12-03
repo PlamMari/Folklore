@@ -5,10 +5,14 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public class FolkloreEntityRepository implements IFolkloreEntityRepository {
+public interface FolkloreEntityRepository extends JpaRepository<FolkloreEntity, Long> {
 
-    @Override
-    public void flush() {
-//        System.out.println("flushed");
-    }
+    FolkloreEntity save(FolkloreEntity entity);
+
+    void delete(FolkloreEntity entity);
+
+    void deleteById(Long aLong);
+
+    List<FolkloreEntity> findAll();
+
 }
