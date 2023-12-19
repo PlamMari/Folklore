@@ -1,14 +1,13 @@
-package com.example.Folklore.model;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+package com.example.Folklore.entities;
+import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Entity
 @Data
 @Builder
-@Entity
+@NoArgsConstructor
 public class FolkloreEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -27,5 +26,4 @@ public class FolkloreEntity {
         this.story = story;
         this.tags = tags;
     }
-
 }
