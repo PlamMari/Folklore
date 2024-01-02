@@ -25,7 +25,7 @@ public class FolkloreEntityController {
         return ResponseEntity.ok(service.getAllFolkloreEntities());
     }
 
-    @GetMapping("/api/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<?> getFolkloreEntityById(@PathVariable Long id) {
         Optional<FolkloreEntity> folkloreEntityOptional = service.getFolkloreEntityById(id);
         if (folkloreEntityOptional.isEmpty()){
@@ -39,7 +39,7 @@ public class FolkloreEntityController {
         return ResponseEntity.status(201).body(service.createFolkloreEntity(folkloreEntity));
     }
 
-    @PutMapping("/api/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<FolkloreEntity> updateFolkloreEntityById(@PathVariable Long id, @RequestBody FolkloreEntity folkloreEntity) {
         Optional<FolkloreEntity> updatedFolkloreEntity = service.updateFolkloreEntity(id, folkloreEntity);
         return updatedFolkloreEntity.map(entity -> ResponseEntity.ok(entity)).orElseGet(() -> ResponseEntity.status(404).build());
