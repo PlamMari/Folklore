@@ -26,7 +26,7 @@ public class FolkloreEntityController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> getFolkloreEntityById(@PathVariable Long id) {
+    public ResponseEntity<?> getFolkloreEntityById(@PathVariable Integer id) {
         Optional<FolkloreEntity> folkloreEntityOptional = service.getFolkloreEntityById(id);
         if (folkloreEntityOptional.isEmpty()){
             return ResponseEntity.status(404).body("Folklore not found with id " +id);
@@ -40,7 +40,7 @@ public class FolkloreEntityController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<FolkloreEntity> updateFolkloreEntityById(@PathVariable Long id, @RequestBody FolkloreEntity folkloreEntity) {
+    public ResponseEntity<FolkloreEntity> updateFolkloreEntityById(@PathVariable Integer id, @RequestBody FolkloreEntity folkloreEntity) {
         Optional<FolkloreEntity> updatedFolkloreEntity = service.updateFolkloreEntity(id, folkloreEntity);
         return updatedFolkloreEntity.map(entity -> ResponseEntity.ok(entity)).orElseGet(() -> ResponseEntity.status(404).build());
     }

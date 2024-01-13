@@ -19,13 +19,13 @@ public class FolkloreEntityService {
     public List<FolkloreEntity> getAllFolkloreEntities() {
         return repository.findAll();
     }
-    public Optional<FolkloreEntity> getFolkloreEntityById(Long id) {
+    public Optional<FolkloreEntity> getFolkloreEntityById(Integer id) {
         return repository.findById(id);
     }
     public FolkloreEntity createFolkloreEntity(FolkloreEntity folkloreEntity) {
         return repository.save(folkloreEntity);
     }
-    public Optional<FolkloreEntity> updateFolkloreEntity(Long id, FolkloreEntity folkloreEntity) {
+    public Optional<FolkloreEntity> updateFolkloreEntity(Integer id, FolkloreEntity folkloreEntity) {
         if(repository.existsById(id)){
             folkloreEntity.setId(id);
             return Optional.of(repository.save(folkloreEntity));
@@ -33,7 +33,7 @@ public class FolkloreEntityService {
         return Optional.empty();
     }
 
-    public boolean deleteFolkloreEntity(Long id) {
+    public boolean deleteFolkloreEntity(Integer id) {
         if(repository.existsById(id)){
             repository.deleteById(id);
             return true;

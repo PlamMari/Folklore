@@ -21,7 +21,7 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Object> getUser(@PathVariable Long id){
+    public ResponseEntity<Object> getUser(@PathVariable Integer id){
         Optional<User> user = userService.findById(id);
         return user.<ResponseEntity<Object>>map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.status(404).body("User not found with id " + id));
@@ -33,7 +33,7 @@ public class UserController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> updateUser(@PathVariable Long id, @RequestBody User user){
+    public ResponseEntity<?> updateUser(@PathVariable Integer id, @RequestBody User user){
         Optional<User> existingUser = userService.findById(id);
         if (existingUser.isPresent()){
             user.setId(id);
