@@ -46,13 +46,14 @@ public class SecurityConfig {
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
+                .csrf(csrf -> csrf.disable())
                 .authorizeRequests(auth -> auth
                         .requestMatchers(new AntPathRequestMatcher("/api/folklore-entities/**")).permitAll()
-                        .requestMatchers(HttpMethod.PUT, "/api/folklore-entities/**").hasRole("USER")
+                        .requestMatchers("/api/folklore-entities/**").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 )
                 .httpBasic(b -> {
-                    //using http basic
+
                 });
         return http.build();
     }
@@ -67,7 +68,7 @@ public class SecurityConfig {
     public PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
     }
-//
+
 //    @Bean
 //    public UserDetailsService userDetailsService(PasswordEncoder passwordEncoder){
 //        InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();

@@ -10,6 +10,7 @@ public interface FolkloreEntityRepository extends JpaRepository<FolkloreEntity, 
 
     Optional<FolkloreEntity> findByOriginCountry(String country);
 
+/*
     FolkloreEntity save(FolkloreEntity entity);
 
     void delete(FolkloreEntity entity);
@@ -17,5 +18,6 @@ public interface FolkloreEntityRepository extends JpaRepository<FolkloreEntity, 
     void deleteById(Integer anInt);
 
     List<FolkloreEntity> findAll();
+*/
 
 }
