@@ -34,7 +34,7 @@ public class FolkloreEntityController {
         return ResponseEntity.ok(folkloreEntityOptional.get());
     }
 
-    @PostMapping
+    @PostMapping("/save")
     public ResponseEntity<FolkloreEntity> createFolkloreEntity(@RequestBody FolkloreEntity folkloreEntity){
         return ResponseEntity.status(201).body(service.createFolkloreEntity(folkloreEntity));
     }
@@ -43,5 +43,17 @@ public class FolkloreEntityController {
     public ResponseEntity<FolkloreEntity> updateFolkloreEntityById(@PathVariable Integer id, @RequestBody FolkloreEntity folkloreEntity) {
         Optional<FolkloreEntity> updatedFolkloreEntity = service.updateFolkloreEntity(id, folkloreEntity);
         return updatedFolkloreEntity.map(entity -> ResponseEntity.ok(entity)).orElseGet(() -> ResponseEntity.status(404).build());
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteFolkloreEntityById(@PathVariable Integer id) {
+        // Assuming your service has a method to delete by ID
+        boolean deleted = service.deleteFolkloreEntity(id);
+
+        if (deleted) {
+            return ResponseEntity.ok("Folklore entity with ID " + id + " deleted successfully.");
+        } else {
+            return ResponseEntity.status(404).body("Folklore entity not found with ID " + id);
+        }
     }
 }
