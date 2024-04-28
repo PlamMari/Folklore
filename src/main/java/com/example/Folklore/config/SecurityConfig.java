@@ -43,20 +43,21 @@ public class SecurityConfig {
 //                });
 //        return http.build();
 //    }
-    @Bean
-    SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http
-                .csrf(csrf -> csrf.disable())
-                .authorizeRequests(auth -> auth
-                        .requestMatchers(new AntPathRequestMatcher("/api/folklore-entities/**")).permitAll()
-                        .requestMatchers("/api/folklore-entities/**").hasRole("ADMIN")
-                        .anyRequest().authenticated()
-                )
-                .httpBasic(b -> {
+@Bean
+SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    http
+            .csrf(csrf -> csrf.disable())
+            .authorizeRequests(auth -> auth
+                    .requestMatchers(new AntPathRequestMatcher("/api/folklore-entities")).permitAll()
+                    .requestMatchers(new AntPathRequestMatcher("/users/**")).hasRole("ADMIN")
+                    .requestMatchers(new AntPathRequestMatcher("/api/folklore-entities/**")).hasRole("MANAGER")
+                    .anyRequest().permitAll()
+            )
+            .httpBasic(b -> {
 
-                });
-        return http.build();
-    }
+            });
+    return http.build();
+}
 
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
