@@ -5,7 +5,7 @@
 
 ## Description
 
-This is a Java application that let's you enter Folklore stories into a database using Hibernate.
+This is a Java application that let's you enter Folklore stories into a database using Hibernate to create your Folklore Encyclopedia.
 
 ## Installation
 
