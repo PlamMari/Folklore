@@ -24,6 +24,30 @@ gradle bootRun
 Access H2 Database: The project uses an H2 in-memory database for runtime data storage. It can be accessed through the H2 console.
 Development Tools: For development purposes, Spring Boot DevTools is included for automatic restarts and live reloading.
 
+## Installation with Docker
+
+1. Prerequisites
+
+Ensure Docker is installed on your system.
+2. Building the Docker Image
+
+Navigate to the directory containing the Dockerfile.
+Run the command:
+```cmd
+docker build -t spring .
+```
+3. Running the Container
+Execute the command:
+```cmd
+docker run -d --name folklore-app spring
+```
+5. Verifying the Application
+
+Check the container logs with: 
+```cmd
+docker logs folklore-app
+```
+
 ## Usage
 
 Explain how to use the application, including any necessary commands.
