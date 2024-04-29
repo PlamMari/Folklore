@@ -1,3 +1,6 @@
+![Folklore DB banner](https://github.com/PlamMari/Folklore/blob/master/Folklore_DB%20(2).png)
+
+
 # Folklore DB
 
 ## Description
